@@ -2,9 +2,52 @@ jQuery(function() {
 	initSlickCarousel();
   initMobileNav();
 	initSameHeight();
+  initPazzle();
 });
 
-
+function initPazzle(){
+  $('.js-pazzle').find(".js-box").click(function(){
+  var elem = $(this);
+  var parentDiv = elem.parent();
+  var childs = parentDiv.find('.js-box');
+  //Total number of children --- Общее количество дочерних элементов
+  var countChild = parentDiv.find('.js-box').length - 1; 
+  //Transform an array --- преобразование из ассоциативного массива к массиву
+  childs = Array.prototype.slice.call(childs);
+  //------------------------------------------------------------
+  /*function toCountmaxZindex() сounts the largest z-index
+  ---подсчет наибольшего z-index
+  */
+  function toCountmaxZindex(){
+    var count = 0;
+    for(var i = 0; i <= countChild; i++){ 
+        if(count <= $(childs[i]).css('z-index')){
+          count = $(childs[i]).css('z-index')
+         };
+    }
+    return count;
+  };
+  /*function toChangeZindex() сhanges the z-index of the elements being processed
+  --- изменение z-index перебираемых дочерних элементов
+  */
+  function toChangeZindex(){
+    elem.css('z-index', z_index);
+    for(var i = 0; i <= countChild; i++){
+      if($(childs[i]).attr("class") !== elem.attr("class")){
+          var tmp = +$(childs[i]).css('z-index');
+          $(childs[i]).css('z-index', tmp-1);
+        };
+    };
+    
+  };
+  
+  var z_index = +toCountmaxZindex();
+  if(elem.css('z-index') != z_index){
+    toChangeZindex();
+  };
+  
+});
+};
 // slick init
 function initSlickCarousel() {
   /* <Page Portal> */
