@@ -33,7 +33,7 @@ function initPazzle(){
   function toChangeZindex(){
     elem.css('z-index', z_index);
     for(var i = 0; i <= countChild; i++){
-      if($(childs[i]).attr("class") !== elem.attr("class")){
+      if($(childs[i]).attr("class") !== elem.attr("class") && $(childs[i]).css('z-index') > 0){
           var tmp = +$(childs[i]).css('z-index');
           $(childs[i]).css('z-index', tmp-1);
         };
@@ -56,7 +56,7 @@ function initSlickCarousel() {
 		arrows: true,
 		dots: true,
 		dotsClass: 'slick-dots',
-		autoplay: true,
+		autoplay: false,
 		autoplaySpeed: 4000,
 		centerPadding: '0px',
     adaptiveHeight: false,

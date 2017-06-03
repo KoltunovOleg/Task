@@ -673,15 +673,31 @@ ul {
 
 /* Slick slider styles */
 .slick-gallery {
-  font-size: 40px;
+  font-size: 2.5em;
   margin: 0 0 30px; }
+  @media (max-width: 1023px) {
+    .slick-gallery {
+      font-size: 1.5em; } }
   .slick-gallery .slide {
+    position: relative;
     padding: 265px 0 50px;
     min-height: 664px;
     background-size: cover;
     background-position: 50% 50%;
     text-align: center;
     color: #000; }
+    @media (max-width: 1365px) {
+      .slick-gallery .slide {
+        min-height: 0; } }
+    .slick-gallery .slide .btn-red {
+      position: absolute;
+      bottom: 42%;
+      left: 0;
+      right: 0;
+      width: 35%; }
+      @media (max-width: 1023px) {
+        .slick-gallery .slide .btn-red {
+          height: 40px; } }
 
 .slick-slider {
   position: relative;
@@ -756,7 +772,7 @@ ul {
 .slick-arrow {
   position: absolute;
   z-index: 1;
-  bottom: 44%;
+  bottom: 40%;
   background: transparent;
   border: none;
   color: rgba(236, 37, 38, 0.8);
@@ -931,7 +947,7 @@ ul {
       left: 65%; }
 
 .container-subscription {
-  margin: 0 0 70px; }
+  margin: 0 0 60px; }
   .container-subscription h2 {
     font-size: 23px;
     color: #ec2526;
@@ -951,6 +967,9 @@ ul {
     font-weight: 900;
     color: #fff;
     outline: none; }
+  @media (min-width: 481px) {
+    .container-subscription .form-inline .form-group {
+      margin: 0 0 10px; } }
 
 .partners {
   margin: 0 0 60px; }
